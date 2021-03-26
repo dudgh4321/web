@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<form action="inputTag1.jsp" method="get">
+    <section>
+        <article>
+            <table border="1" style="width: 50%">
+                <caption>입력정보</caption>
+                <tr>
+                    <th>이름</th>
+                    <td><input type="text" name="name"></td>
+                </tr>
+                <tr>
+                    <th>성별</th>
+                    <td>
+                        <input type="radio" name="sex" value="male" checked>남자
+                        <input type="radio" name="sex" value="female">여자
+                    </td>
+                </tr>
+                <tr>
+                    <th>학년</th>
+                    <td>
+                        <input type="radio" name="yera" value="1" checked>1학년
+                        <input type="radio" name="yera" value="2">2학년
+                        <input type="radio" name="yera" value="3">3학년
+                        <input type="radio" name="yera" value="4">4학년
+                    </td>
+                </tr>
+                <tr>
+                    <th>관심</th>
+                    <td>
+                        <input type="checkbox" name="subject" value="HTML5" checked>HTML5
+                        <input type="checkbox" name="subject" value="CSS3" >CSS3
+                        <input type="checkbox" name="subject" value="JavaScript" >JavaScript
+                        <input type="checkbox" name="subject" value="JQuery" >JQuery
+                    </td>
+                </tr>
+                 <tr>
+                    <th>취미</th>
+                    <td><select name="hobby" size="4" multiple>
+                        <option value="독서" selected>독서</option>
+                        <option value="2" selected>운동</option>
+                        <option value="3" selected>요리</option>
+                        <option value="4" selected>낮잠</option>
+                    </select></td>
+                </tr>
+            </table>
+            <input type="submit" value="전송">
+            <input type="reset" value="취소">
+        </article>
+    </section>
+    </form>
+</body>
+
+</html>
