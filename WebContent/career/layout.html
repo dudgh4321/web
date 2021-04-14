@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index.html</title>
+    <style>
+        * {
+            border: 1px solid gray;
+            text-align: center;
+            box-sizing: border-box;
+            border-radius: 10px;
+            
+        }
+
+        header {
+            background-color: bisque;
+            height: 15%;
+            margin: 1%;
+        }
+
+        nav, section {
+            background-color: rgb(133, 195, 39);
+            margin: 1% 1%;
+        }
+
+        nav {
+            width: 23%;
+            float: left;
+            height: 46vh;
+            background-color: rgb(133, 195, 39);
+        }
+        nav>a{
+            border-style: ;
+        }
+        nav>div {
+            height: 30%;
+            align-items: center;
+        }
+
+        section {
+            width: 73%;
+            float: left;
+            height: 46vh;
+        }
+        section>iframe {
+            margin: 3%; background-color: rgb(194, 233, 132);
+            height: 93%;
+        }
+  
+        footer {
+            background-color: rgb(230, 166, 88);
+            height: 50px;
+            clear: left;
+            margin: 1%;
+        }
+        ul{
+            border-width: 0;
+        }
+        ul>li{
+            display: inline;
+            border-width: 0;
+        }
+        ul>li>a{
+            border-width: 0;
+        }
+    
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul>
+            <li><a href="#">주제1</a></li>
+            <li><a href="#">주제2</a></li>
+            <li><a href="#">주제3</a></li>
+        </ul>
+    </header>
+
+    <nav>
+        <div><a href="index.html" target="if_a">&lt;home&gt;</a></div> 
+        <div><a href="info.html" target="if_a">&lt;자기소개&gt;</a></div>
+    </nav>
+    <section>
+            <iframe name="if_a"></iframe>
+    </section>
+    <footer >
+        &lt;사이트 소개&gt;
+    </footer>
+
+</body>
+
+</html>

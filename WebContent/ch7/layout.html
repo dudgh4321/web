@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            border: 1px solid gray;
+            text-align: center;
+            box-sizing: border-box;
+            border-radius: 10px;
+            
+        }
+
+        header.container {
+            background-color: bisque;
+            height: 15%;
+            margin: 1%;
+        }
+
+        nav,
+        section,
+        aside {
+            background-color: rgb(133, 195, 39);
+            margin: 1% 1%;
+        }
+
+        nav {
+            width: 23%;
+            float: left;
+            height: 46vh;
+            background-color: rgb(133, 195, 39);
+        }
+
+        section {
+            width: 48%;
+            float: left;
+            height: 46vh;
+        }
+        section>header, section>article, section>footer {
+            margin: 3%; background-color: rgb(194, 233, 132);
+        }
+        section>header{
+            height: 17%;
+        }
+        section>article{
+            height: 45%;
+        }
+        section>footer{
+            height: 17%;
+        }
+
+        aside {
+            width: 23%;
+            float: left;
+            height: 46vh;;
+        }
+
+        footer.container {
+            background-color: rgb(230, 166, 88);
+            height: 50px;
+            clear: left;
+            margin: 1%;
+        }
+        ul{
+            border-width: 0;
+        }
+        ul>li{
+            display: inline;
+            border-width: 0;
+        }
+        ul>li>a{
+            border-width: 0;
+        }
+        li{
+            border-width: 0;
+        }
+        ol{
+            border-width: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header class='container'>
+        <ul>
+            <li><a href="#">주제1</a></li>
+            <li><a href="#">주제2</a></li>
+            <li><a href="#">주제3</a></li>
+        </ul>
+    </header>
+
+    <nav>
+        <ol>
+            <li>menu1</li>
+            <li>menu2</li>
+            <li>menu3</li>
+            <li>menu4</li>
+        </ol>
+    </nav>
+    <section>
+        &lt;section&gt;
+        <header class='item'>
+            &lt;header&gt;
+        </header>
+        <article>
+            &lt;article&gt;
+        </article>
+        <footer>
+            &lt;footer&gt;
+        </footer>
+    </section>
+
+    <aside>
+        &lt;aside&gt;
+    </aside>
+
+    <footer class='container'>
+        &lt;footer&gt;
+    </footer>
+
+</body>
+
+</html>

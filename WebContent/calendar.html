@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calendar.html</title>
+    <style>
+        tr :nth-of-type(7n) {
+            color :blue;
+        }
+        tr :nth-of-type(7n+1) {
+            color :red;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        calendarCreate();
+        function calendarCreate() {
+        let today = new Date();
+        let thisYear = today.getFullYear();
+        let thisMonth = today.getMonth(); // -1 되서 나옴
+        let thisDate = today.getDate();
+        let thisDay = today.getDay(); // 0: 일 1: 월 2:화 3: 수.. 
+
+        let lastDate = new Date(thisYear, thisMonth + 1, 0).getDate(); // 0이라는 일수가 들어가면 지난달 마지막 날 출력 
+        let firstDay = new Date(thisYear, thisMonth, 1).getDay();
+        let box = 1;
+        document.write('<table border="1">');
+        document.write('<tr><td style="color : red;">일</td>')
+        document.write('<td>월</td>')
+        document.write('<td>화</td>')
+        document.write('<td>수</td>')
+        document.write('<td>목</td>')
+        document.write('<td>금</td>')
+        document.write('<td style="color : blue;">토</td></tr>')
+        document.write('<tr>')
+        for (let i = 1; i <= lastDate+firstDay; i++) {
+            if (box < (firstDay + 1)) {
+                document.write('<td></td>');
+                box++;
+                if (box % 7 == 1)
+                    document.write('</tr><tr>');
+
+            } else if (box >= (firstDay + 1)) {
+                document.write('<td>' + (i-firstDay) + '</td>');
+                box++;
+                if (box % 7 == 1)
+                    document.write('</tr><tr>');
+            }
+        }document.write('</table>');}
+    </script>
+
+
+</body>
+
+</html>

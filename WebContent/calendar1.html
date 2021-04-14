@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        tr :nth-of-type(7n) {
+            color :blue;
+        }
+        tr :nth-of-type(7n+1) {
+            color :red;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        createCalendar(2021, 3);
+        createCalendar(2021, 4);
+        createCalendar(2021, 5);
+        function createCalendar(year, month) {
+            let today = new Date(year,month-1);
+            let thisYear = today.getFullYear();
+            let thisMonth = today.getMonth(); // -1 되서 나옴
+            let thisDate = today.getDate();
+            let thisDay = today.getDay(); // 0: 일 1: 월 2:화 3: 수.. 
+
+            let lastDate = new Date(thisYear, thisMonth + 1, 0).getDate(); // 0이라는 일수가 들어가면 지난달 마지막 날 출력 
+            let firstDay = new Date(thisYear, thisMonth, 1).getDay();
+            let box = 1;
+            let calendarTag = '<table border="1">';
+            calendarTag += '<tr><td style="color : red;">일</td>';
+            calendarTag +='<td>월</td>';
+            calendarTag +='<td>화</td>';
+            calendarTag +='<td>수</td>';
+            calendarTag +='<td>목</td>';
+            calendarTag +='<td>금</td>';
+            calendarTag +='<td style="color : blue;">토</td></tr>';
+            calendarTag +='<tr>';
+                for (let i = 1; i <= lastDate+firstDay; i++) {
+            if (box < (firstDay + 1)) {
+                calendarTag +='<td></td>';
+                box++;
+                if (box % 7 == 1)
+                calendarTag +='</tr><tr>';
+
+            } else if (box >= (firstDay + 1)) {
+                calendarTag +=('<td>' + (i-firstDay) + '</td>');
+                box++;
+                if (box % 7 == 1)
+                calendarTag +='</tr><tr>';
+            }
+        }calendarTag += '</table>';
+        document.write(calendarTag);
+    }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <style>
+        /* body {
+            justify-content: center;
+            align-items: center;
+            width: 700px;
+            justify-content: space-between;
+        } */
+
+        div.main {
+            padding-left: 25px;
+            background-color: rgb(238, 227, 227);
+            width: 700px;
+            display: flex;
+            flex-direction: column;
+            /* flex-wrap: column;
+            justify-content: space-between; */
+        }
+
+
+        div.container {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            height: 91px;
+        }
+
+        div.title {
+            font-size: 15px;
+            font-weight: bold;
+            width: 15%;
+            height: 60px;
+            padding-right: 10px;
+            padding-bottom: 20px;
+         
+            display: inline-block;
+            background-color: white;
+            position: relative;
+        }
+
+        div.content {
+            width: 25%;
+            height: 60px;
+            padding-right: 10px;
+            padding-bottom: 20px;
+            
+            display: inline-block;
+            background-color: white;
+            position: absolute;
+
+        }
+
+        span.star {
+            color: rgb(251, 69, 69);
+        }
+
+        span.select {
+            font-size: 8px;
+            margin: 5px;
+            font-weight: normal;
+        }
+
+        span.select1 {
+            font-size: 8px;
+            font-weight: normal;
+            padding-left: 5px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h2>회원정보(필수)</h2>
+        <div class="container">
+            <div class="title">아이디<span class="star">*</span></div>
+            <div class="content"><input type="text" name="id" required placeholder="4자리이상">
+                <button>아이디중복확인</button></div>
+
+        </div>
+
+        <div class="container">
+            <div class="title">비밀번호<span class="star">*</span></div>
+            <div class="content"><input type="password" name="pwd" placeholder="*********">
+                <span class="select">8~20자리의 영문, 숫자조합(영문, 숫자, 특수기호조합을권장합니다.)</span></div>
+        </div>
+        <div class="container">
+            <div class="title">비밀번호 확인<span class="star">*</span></div>
+            <div class="content"><input type="password" name="pwdchk" placeholder="*********"></div>
+        </div>
+        <div class="container">
+            <div class="title"> 이름<span class="star">*</span></div>
+            <div class="content"><input type="text" name="name"></div>
+        </div>
+        <div class="container">
+            <div class="title">성별<span class="star">*</span> </div>
+            <div class="content">
+                <span class="select">
+                    <input type="radio" name="sex" value="male">남성
+                    <input type="radio" name="sex" value="female" checked>여성
+                    <span></div>
+        </div>
+        <div class="container">
+            <div class="title"> 생년월일<span class="star">*</span></div>
+            <div class="content">
+                <select name="연">
+                    <option value="1">1990</option>
+                    <option value="2">1991</option>
+                    <option value="3">1992</option>
+                    <option value="4">1993</option>
+                    <option value="5">1994</option>
+                    <option value="6">1995</option>
+                    <option value="7" selected>::선택::</option>
+                </select>
+                <select name="월">
+                    <option value="1">01</option>
+                    <option value="2">02</option>
+                    <option value="3">03</option>
+                    <option value="4">04</option>
+                    <option value="5">05</option>
+                    <option value="6">06</option>
+                    <option value="7" selected>::선택::</option>
+                </select>
+                <select name="일">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">5</option>
+                    <option value="7" selected>::선택::</option>
+                </select>
+                <span class="select">
+                    <input type="radio" name="brdtype" checked>양력
+                    <input type="radio" name="brdtype">음력
+                </span></div>
+        </div>
+        <div class="container">
+            <div class="title">이메일<span class="star">*</span></div>
+            <div class="content">
+                <input type="text" name="emailID"> @
+                <input type="text" name="email">
+                <select name="이메일">
+                    <option value="1" selected>직접입력</option>
+                    <option value="2">naver.com</option>
+                    <option value="3">daum.net</option>
+                    <option value="4">nate.com</option>
+                </select> <br>
+                <span class="select">이메일 수신동의 시 신상품/할인혜택/이벤트 등의 정보를 받아보실 수 있습니다. <br>
+                    수신동의 거부 시에도 기본서비스(주문배송 메일)는 발송됩니다.
+                    <input type="radio" name="agree" value="yes" checked>예
+                    <input type="radio" name="agree" value="no">아니요</span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="title">휴대전화<span class="star">*</span> </div>
+            <div class="content"><input type="text" name="phone1" size="10"> -
+                <input type="text" name="phone2" size="10"> -
+                <input type="text" name="phone3" size="10"><br>
+                <span class="select"> 할인혜택과 이벤트, 동의 소식안내를 SMS로 받으실 수 있습니다<br>
+                    수신 동의 거부 시에도 기본서비스는 발송됩니다.
+                    <input type="radio" name="agree1" value="yes" checked>예
+                    <input type="radio" name="agree1" value="no">아니요</span></div>
+        </div>
+        <div class="container">
+            <div class="title"><span>관심브랜드<span class="star">*</span> </span></div>
+            <div class="content">
+                <span class="select1"><input type="checkbox" name="brand">한빛미디어</span>
+                <span class="select1"> <input type="checkbox" name="brand">한빛아케데미</span>
+                <span class="select1"> <input type="checkbox" name="brand">한빛비즈 </span> <br>
+                <span class="select1"> <input type="checkbox" name="brand">한빛라이프 </span>
+                <span class="select1"> <input type="checkbox" name="brand">리얼타임 eBook </span>
+                <span class="select1"> <input type="checkbox" name="brand">MAKE </span> <br>
+                <span class="select1"> <input type="checkbox" name="brand">한빛에듀 </span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

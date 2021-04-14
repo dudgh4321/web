@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border="1" id="tbl"></table>
+    <script>
+        let json = [{
+            id: 1,
+            first_name: "Ase",
+            last_name: "Hansie",
+            email: "ahansie0@techcrunch.com",
+            gender: "Male",
+            ip_address: "254.141.210.107"
+        }, {
+            id: 2,
+            first_name: "Basilius",
+            last_name: "Barribal",
+            email: "bbarribal1@aboutads.info",
+            gender: "Female",
+            ip_address: "70.109.146.5"
+        }, {
+            id: 3,
+            first_name: "Suki",
+            last_name: "Hares",
+            email: "shares2@loc.gov",
+            gender: "Polygender",
+            ip_address: "58.168.178.35"
+        }, {
+            id: 4,
+            first_name: "Zulema",
+            last_name: "Ferrer",
+            email: "zferrer3@bravesites.com",
+            gender: "Genderqueer",
+            ip_address: "235.54.166.44"
+        }, {
+            id: 5,
+            first_name: "Nola",
+            last_name: "Placide",
+            email: "nplacide4@devhub.com",
+            gender: "Non-binary",
+            ip_address: "153.185.162.17"
+        }];
+
+        let titles = {
+            id: '아이디',
+            first_name: '이름',
+            last_name: '성',
+            email: '이메일',
+            gender: '남여'
+        }
+        let tbl = document.getElementById('tbl');
+        let trTag, thTag, tdTag, text
+        trTag = document.createElement('tr')
+        tbl.appendChild(trTag);
+
+        thTag = document.createElement('th');
+        let ckb = document.createElement('input');
+        ckb.setAttribute("type", "checkbox");
+        ckb.onchange = allCheck;
+        thTag.appendChild(ckb);
+        trTag.appendChild(thTag);
+
+        for (title in titles) {
+            thTag = document.createElement('th');
+            text = document.createTextNode(titles[title]);
+            thTag.appendChild(text);
+            trTag.appendChild(thTag)
+        }
+        tdTag = document.createElement('td');
+        let btn = document.createElement('button');
+        btn.innerHTML = 'Selected delete';
+        btn.onclick = delSelected;
+        tdTag.appendChild(btn);
+        trTag.appendChild(tdTag);
+
+
+
+        for (data of json) {
+            trTag = document.createElement('tr');
+            let ckb = document.createElement('input');
+            ckb.setAttribute("type", "checkbox");
+            ckb.onchange = checkAll;
+            tdTag = document.createElement('td');
+
+            tdTag.appendChild(ckb);
+            trTag.appendChild(tdTag);
+            // id, first_name, last_name, email, gender, ip_address
+            for (field in titles) {
+                tdTag = document.createElement('td');
+                text = document.createTextNode(data[field]);
+                tdTag.appendChild(text);
+                trTag.appendChild(tdTag);
+
+            }
+            tdTag = document.createElement('td');
+            let btn = document.createElement('button');
+            btn.innerHTML = 'delete';
+            btn.onclick = clickFnc;
+            tdTag.appendChild(btn);
+            trTag.appendChild(tdTag);
+
+            tbl.appendChild(trTag);
+
+            trTag.onmouseover = function () {
+                this.style.backgroundColor = 'lightyellow';
+            }
+            trTag.onmouseout = function () {
+                this.style.backgroundColor = '';
+            }
+        }
+
+
+        function clickFnc() {
+            this.parentNode.parentNode.remove();
+        }
+
+        function delSelected() {
+            let checkedAll = document.querySelectorAll('td>input[type="checkbox"]:checked')
+            for (let i = 0; i < checkedAll.length; i++) {
+                checkedAll[i].parentNode.parentNode.remove();
+            }
+        }
+
+
+        function allCheck() {
+            let tChk = document.querySelector('th>input[type="checkbox"]');
+            let checks = document.querySelectorAll('td>input[type="checkbox"]');
+            for (let i = 0; i < checks.length; i++) {
+                checks[i].checked = tChk.checked;
+            }
+        }
+
+        function checkAll() {
+            let tChk = document.querySelector('th>input[type="checkbox"]');
+            let checks = document.querySelectorAll('td>input[type="checkbox"]');
+            
+             if(checks[0].checked&&checks[1].checked&&checks[2].checked&&checks[3].checked&&checks[4].checked) {
+                tChk.checked = true;
+            } else
+                tChk.checked = false;
+        }
+    
+    </script>
+</body>
+
+</html>

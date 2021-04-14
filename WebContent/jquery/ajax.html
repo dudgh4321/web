@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //리스트 보여주기.
+            $.ajax({
+                url:'ajaxList.jsp',
+                //data: 'json',
+                success: function (result) {
+                	let data = JSON.parse(result);
+                    console.log(data);
+                },
+                error: function(reject){
+                	console.error(reject);
+                }
+            });
+
+            // let query = 'boardNo=1&title=test&content=test&writer=user1';
+            //입력처리.
+            $('#frm').submit(function (event) {
+                event.preventDefault(); // submit 시 jsp 로 변환을 막고  현재페이지 안에서 아래의 값을 찍어줌
+                $.ajax({
+                    url: $('#frm').attr('action'), // = 'ajax.jsp'
+                    // data: {
+                    //     boardNo: $('input[name="boardNo"]').val(),  // 첫번째 작성방법
+                    //     title: $('input[name="title"]').val(),
+                    //     content: $('textarea[name="content"]').val(),
+                    //     writer: $('input[name="writer"]').val()
+                    // },
+                    data: $('#frm').serialize(),
+                    success: function (data) {
+                        let result = JSON.parse(data); // JSON파일 ,,--->object
+                        console.log(result);
+                        $('input[name="boardNo"]').val('');
+                        $('input[name="title"]').val('');
+                        $('textarea[name="content"]').val('');
+                        $('input[name="writer"]').val('');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <form action="ajax.jsp" id="frm" method="get">
+        <div>게시글번호: <input type="text" name="boardNo"></div>
+        <div>제목: <input type="text" name="title"></div>
+        <div>내용: <textarea name="content" cols="30" rows="10">
+            </textarea></div>
+        <div>작성자: <input type="text" name="writer"></div>
+        <div> <input type="submit" value="Send"></div>
+        <div><input type="reset" value="Cancel"></div>
+    </form>
+
+    <div id="show"></div>
+</body>
+
+</html>

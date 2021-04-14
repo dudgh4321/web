@@ -1,12 +1,108 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="EUC-KR">
-<title>index  </title>
+    <meta charset="EUC-KR">
+    <title>index.html </title>
+    <!-- <script src="javascript/class.js"></script>
+    <script src="javascript/changeColor.js"></script> -->
+    <!-- <script src="javascript/lunchtime.js"></script> -->
+    <!-- <script src="javascript/email.js"></script> -->
+    <!-- <script src="javascript/basic.js"></script>
+    <script src="javascript/varivble.js"></script>
+    <script src="javascript/operator.js"></script>
+    <style>
+        div{
+            float: left;
+            width: 50px;
+            height: 50px;
+            background-color: yellow;
+        }
+    </style> -->
 </head>
-<body>
-<h1> Welcome! Kim Youngho !!</h1>
-<p><a href="career/mycreer.html" target="_self">my career  </a></p>
-<p><a href="/web/intro/myinfo.html" target="_self">my info </a></p>
+
+<body id='bdy'>
+    <div></div>
+    <div id='show'></div>
+    <div id='show'></div>
+    <ul id='list'></ul>
+    <ul id='member'></ul>
+    <table id='tbl' border="1"></table>
+    <p />
+    <button onclick="chageColor()">색변경하기</button>
+    <script>
+        let numbers = [23, 45, 33, 56, 12];
+        let sum = 0;
+        let list = document.getElementById('list');
+        numbers.forEach(function (a, b, c) {
+            sum += a;
+            let li = document.createElement('li')
+            let text = document.createTextNode(a);
+            li.appendChild(text);
+            list.appendChild(li);
+        }); //각각의 요소들에 대해서
+        console.log(sum);
+
+
+        class Student {
+            constructor(sno, name, score) {
+                this.sno = sno;
+                this.name = name;
+                this.score = score;
+            }
+        }
+
+        let student = {
+            sno: '1111',
+            name: 'hong',
+            score: 80
+        }
+
+        let students = [];
+        students.push(student);
+        students.push(new Student('2222', 'kim', 80));
+        students.push(new Student('3333', 'lim', 30));
+
+        function createTr(std) {
+            let trTag = document.createElement('tr');
+            trTag.onmouseover = function () {
+                this.style.backgroundColor = 'yellow';
+            }
+            trTag.onmouseout = function () {
+                this.style.backgroundColor = '';
+
+            }
+
+            for (field in std) {
+                let tdTag = document.createElement('td');
+                let text = document.createTextNode(std[field]);
+                tdTag.appendChild(text);
+                trTag.appendChild(tdTag);
+            }
+
+            td = document.createElement('td');
+            let btn = document.createElement('button');
+            btn.innerHTML = 'OK';
+            btn.onclick = clickFnc;
+            td.appendChild(btn);
+            trTag.appendChild(td);
+
+            return trTag;
+        }
+
+        let tbl = document.getElementById('tbl');
+        students.forEach(function (val, idx, ary) {
+            let newTr = createTr(val);
+            tbl.appendChild(newTr);
+
+        });
+
+        function clickFnc() {
+            // console.log(this.parentNode.parentNode.children[1].innerHTML);
+            // window.alert(this.parentNode.parentNode.children[0].innerHTML);
+            this.parentNode.parentNode.remove();
+        }
+    </script>
 </body>
+
 </html>

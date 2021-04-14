@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <table id='tbl' border="1"></table> -->
+    <script>
+        let json = [{
+            id: 1,
+            first_name: "Allianora",
+            last_name: "Howard",
+            email: "ahoward0@pcworld.com",
+            gender: "Female",
+            ip_address: "198.211.128.49"
+        }, {
+            id: 2,
+            first_name: "Peria",
+            last_name: "Triebner",
+            email: "ptriebner1@ameblo.jp",
+            gender: "Male",
+            ip_address: "143.119.76.243"
+        }, {
+            id: 3,
+            first_name: "Stafford",
+            last_name: "Drexel",
+            email: "sdrexel2@amazon.co.jp",
+            gender: "Male",
+            ip_address: "74.170.46.52"
+        }, {
+            id: 4,
+            first_name: "Sabrina",
+            last_name: "Dabbs",
+            email: "sdabbs3@mit.edu",
+            gender: "Female",
+            ip_address: "155.96.184.80"
+        }, {
+            id: 5,
+            first_name: "Nester",
+            last_name: "Foot",
+            email: "nfoote@theatlantic.com",
+            gender: "Agender",
+            ip_address: "143.77.216.80"
+        }];
+
+        // 표시할 항목 관련 object.
+        let titles = {
+            id: '아이디',
+            first_name: '이름',
+            last_name: '성',
+            email: '이메일',
+            gender: '남여'
+        }
+
+        let tr, td, text, tbl, chkbox, btn;
+        let bdy = document.getElementsByTagName('body');
+        // tbl = document.getElementById('tbl');
+        tbl = document.createElement('table');
+        bdy[0].appendChild(tbl);
+        tbl.setAttribute('id', 'tbl');
+        tbl.setAttribute('border', '1');
+
+        // 타이틀.
+        tr = document.createElement('tr');
+        tbl.appendChild(tr);
+        // checkbox 생성.
+        chkbox = document.createElement('input');
+        chkbox.setAttribute('type', 'checkbox');
+        chkbox.onchange = allCheck;
+        td = document.createElement('th')
+        td.appendChild(chkbox);
+        tr.appendChild(td);
+
+        for (title in titles) {
+            th = document.createElement('th');
+            text = document.createTextNode(titles[title]);
+            th.appendChild(text);
+            tr.appendChild(th);
+        }
+        // button 항목 추가.
+        btn = document.createElement('input');
+        btn.setAttribute('type', 'button');
+        btn.setAttribute('value', 'Selected Del');
+        td = document.createElement('th')
+        td.appendChild(btn);
+        tr.appendChild(td);
+
+        // 데이터 항목.
+        for (data of json) {
+            tr = document.createElement('tr');
+            // checkbox 생성.
+            chkbox = document.createElement('input');
+            chkbox.setAttribute('type', 'checkbox');
+            td = document.createElement('td')
+            td.appendChild(chkbox);
+            tr.appendChild(td);
+            // id, first_name, last_name, email, gender, ip_address
+            for (field in titles) {
+                td = document.createElement('td');
+                text = document.createTextNode(data[field]);
+                td.appendChild(text);
+                tr.appendChild(td);
+            }
+            // button 항목 추가.
+            btn = document.createElement('input');
+            btn.setAttribute('type', 'button');
+            btn.setAttribute('value', 'Del');
+            btn.onclick = delFunc;
+            td = document.createElement('td')
+            td.appendChild(btn);
+            tr.appendChild(td);
+
+            tbl.appendChild(tr);
+        }
+
+        // 한건 지우기.
+        function delFunc() {
+            console.log(this.parentNode.parentNode.remove());
+        }
+
+        // 전체선택
+        function allCheck() {
+            let tChk = document.querySelector('th>input[type="checkbox"]');
+            let checks = document.querySelectorAll('td>input[type="checkbox"]');
+            for (let i = 0; i < checks.length; i++) {
+                checks[i].checked = tChk.checked;
+            }
+        }
+    </script>
+</body>
+
+</html>
